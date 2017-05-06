@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta name="x5-orientation" content="portrait">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1,user-scalable=no,minimal-ui">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="author" content="YY-WFE，170549632@qq.com">
+	<title>商品详情</title>
+</head>
+<script type="text/javascript">
+	var screen_w = parseInt(window.screen.width),
+        scale = screen_w / 760;
+    //alert(screen_w);
+    //alert(scale);
+    document.write( '<meta name="viewport" content="width=760, user-scalable=no,minimum-scale ='+scale+',maximum-scale = '+scale+' target-densitydpi=device-dpi">' );      
+</script>
+<style type="text/css">
+	*{
+		margin:0;
+		padding:0;
+	}
+	img{
+		max-width:750px;
+	}
+    #productDetail{
+    	padding:5px;
+        -webkit-text-size-adjust:200%;
+    }
+    #productDetail img{
+    	vertical-align: top;
+    }
+</style>
+<body>
+	<div id="productDetail"></div>
+</body>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://res.dinghuo123.com/dist/js/lib/jquery.unveil/jquery.unveil.js"></script>
+<script type="text/javascript">
+	//var	desc = "";
+	function replaceTextarea(str){
+        var reg=new RegExp("\n","g");
+        str = str.replace(reg,"&#60;br /&#62;");
+        return str;
+    }
+    function decodeHTML(desc){
+    	return $('<div/>').html(replaceTextarea(desc || '')).text();
+    }
+    function resetImg(){
+    	//强制将大于750px的图片设为750像素
+    	$("img","#productDetail").each(function(i,v){
+    		var w = $(v).attr("width");
+    		if(!!w && w > 750){
+    			$(v).attr("width",750);
+    		}
+    	});
+    }
+	function setDesc(str){
+		var html = decodeHTML(str).replace(/src=/g,'src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" data-src=');
+		$("#productDetail").html(html);
+		$("img","#productDetail").unveil();
+		resetImg();
+	}
+</script>
+</html>

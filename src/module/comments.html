@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<title>CNode：Node.js专业中文社区</title>
+		<link rel="stylesheet" href="../../dist/styles/package.min.css" />
+		<script type="text/javascript" src="../../dist/scripts/zepto.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/config.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/package.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/components.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/global.min.js"></script>
+	</head>
+	<body>
+		<x-html>
+			<x-body>
+				<div class="flex-box-full">
+					<header>
+						<nav class="flex-box">
+							<a class="btn-pull goback" onclick="history.back()">
+								<i class="iconfont">&#xe915</i>
+							</a>
+							<div class="flex-item">
+								<h2>评论</h2>
+							</div>
+							<span class="btn-pull-empty">
+								
+							</span>
+						</nav>
+					</header>
+          <div class="alert">还没有实现评论</div>
+					<div class="scrollbox">
+            <x-ajat>
+              <script type="text/template">
+                <x-form>
+                  <form action="https://cnodejs.org/api/v1/topic/<%=query.id%>/replies">
+                    <div class="comments-editor">
+                      <textarea class="line-bottom" placeholder="有什么想说的" required requiredmsg="请输入评论内容" ></textarea>
+                      <h4><%=query.title%></h4>
+                    </div>
+                    <br />
+                    <div class="tc">
+                      <button class="btn-primary">提交</button>
+                    </div>
+                  </form>
+                </x-form>
+              </script>
+            </x-ajat>
+					</div>	
+				</div>
+			</x-body>
+		</x-html>
+	</body>
+</html>

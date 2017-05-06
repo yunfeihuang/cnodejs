@@ -1,0 +1,45 @@
+@import "../../styles/base.scss";
+
+x-ajat{
+	display:block;
+}
+x-ajat.loading{
+	position:relative;
+}
+x-ajat.loading:after{
+	content:"数据加载中...";
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	text-align:center; 
+	line-height: 1rem;
+	background: rgba(255,255,255,0.85);
+    height: 100%;
+}
+.reload{
+	min-height:300px;
+	@include flexbox();
+	@include flex-align();
+	@include flex-justify();
+	color:#999;
+}
+.reload a{
+	text-align:center;
+	width:60px;
+	display:inline-block;
+}
+.reload span{
+	background:url($host+'app/agentV2/resource-app/css/img/noTouch.png') no-repeat center;
+	-wekit-background-size: cover;
+	background-size: cover;
+	width:60px;
+	height:60px;
+	display:inline-block;
+}
+.reload i{
+	font-size:1.2rem;
+}
+.reload p{
+	margin-top:0.11rem;
+}

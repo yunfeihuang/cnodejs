@@ -1,0 +1,50 @@
+@import "../../styles/base.scss";
+
+/**日期控件优化**/
+.dwb-s,.dwb-c{
+	color:$primary-color;
+	@include line-bottom();
+}
+.mbsc-ios .dwb{
+	color:inherit!important;
+}
+body .mbsc-ios .dwwol{
+	@include line-around();
+	height:40px;
+	margin: -21px 0 0 -10px;
+}
+@media (-webkit-min-device-pixel-ratio: 2), not all{
+	body .mbsc-ios .dwwol{
+		@include line-around();
+	}
+}
+body .mbsc-ios .dwwo{
+	background: -webkit-gradient(linear,left bottom,left top,from(#fff),color-stop(0.52, rgba(245,245,245,0)),color-stop(0.48, rgba(245,245,245,0)),to(#fff));
+    background: -webkit-linear-gradient(#fff,rgba(245,245,245,0) 52%, rgba(245,245,245,0) 48%, #fff);
+    background: -moz-linear-gradient(#fff,rgba(245,245,245,0) 52%, rgba(245,245,245,0) 48%, #fff);
+    background: linear-gradient(#fff,rgba(245,245,245,0) 52%, rgba(245,245,245,0) 48%, #fff);
+}
+body .mbsc-ios .dwwr{
+	background:#fff;
+}
+body .mbsc-ios .dwo{
+	background:rgba(0,0,0,0.65);
+}
+body .mbsc-ios .dwb{
+	margin-top:0.05rem;
+	margin-bottom:0.05rem;
+	font-size:0.32rem;
+}
+x-date{
+	display:inline-block;
+	position:relative;
+	overflow:hidden;
+}
+x-date[weekmark] input:first-child{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	heiht:100%;
+	opacity:0;
+}

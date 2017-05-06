@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<title>CNode：Node.js专业中文社区</title>
+		<link rel="stylesheet" href="../../dist/styles/package.min.css" />
+		<script type="text/javascript" src="../../dist/scripts/zepto.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/config.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/package.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/components.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/global.min.js"></script>
+	</head>
+	<body>
+		<x-html>
+      <x-script src="user.js"></x-script>
+			<x-body>
+				<div class="flex-box-full">
+					<header class="noshadow">
+						<nav class="flex-box">
+							<a class="btn-pull goback" onclick="history.back()">
+								<i class="iconfont">&#xe915</i>
+							</a>
+							<div class="flex-item">
+								<h2>用户主页</h2>
+							</div>
+							<a class="btn-pull-empty"></a>
+						</nav>
+					</header>
+					<div class="scrollbox flex-item user-home default-placeholder">
+						<x-ajat action="https://cnodejs.org/api/v1/user/<%=query.id%>">
+							<script type="text/template">
+                <section class="user-info line-bottom">
+                  <x-img lazyload src="<%=data.avatar_url%>"></x-img>
+                  <h4><%=data.loginname%></h4>
+                  积分：<%=data.score%>
+                </section>
+                <%if(data.recent_topics&&data.recent_topics.length>0){%>
+                <h2>最近创建的话题</h2>
+                <div>
+                <%data.recent_topics&&data.recent_topics.forEach(function(item){%>
+                <div class="topic-item btn-touch line-bottom">
+                  <div class="flex-box align-center">
+                    <a href="user.html?id=<%=item.author.loginname%>">
+                      <x-img lazyload src="<%=item.author.avatar_url%>"></x-img>
+                    </a>
+                    <div class="topic-item-r flex-item">
+                      <a href="detail.html?id=<%=item.id%>">
+                      <h4 class="ell">
+                      <%=item.title%>
+                      </h4>
+                      <div><%=new Date(item.last_reply_at).format("yyyy-MM-dd hh:mm:ss")%></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <%})%>
+                </div>
+                <%}%>
+                <%if(data.recent_replies&&data.recent_replies.length>0){%>
+                <h2>最近参与的话题</h2>
+                <div>
+                <%data.recent_replies&&data.recent_replies.forEach(function(item){%>
+                <div class="topic-item btn-touch line-bottom">
+                  <div class="flex-box align-center">
+                    <a href="user.html?id=<%=item.author.loginname%>">
+                      <x-img lazyload src="<%=item.author.avatar_url%>"></x-img>
+                    </a>
+                    <div class="topic-item-r flex-item">
+                      <a href="detail.html?id=<%=item.id%>">
+                      <h4 class="ell">
+                      <%=item.title%>
+                      </h4>
+                      <div><%=new Date(item.last_reply_at).format("yyyy-MM-dd hh:mm:ss")%></div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <%})%>
+                </div>
+                <%}%>
+							</script>
+						</x-ajat>
+						
+					</div>	
+				</div>
+			</x-body>
+		</x-html>
+	</body>
+</html>

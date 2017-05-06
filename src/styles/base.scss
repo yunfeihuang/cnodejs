@@ -1,0 +1,127 @@
+$font-stack:Helvetica,sans-serif;
+$primary-color:#80bd01;
+$link-color:#08c;
+$line-color:#eee;
+$border-color:#dadada;
+$border-color:#ddd;
+$focus-color:$primary-color;
+$delete-color:#ef4f4f;
+$disabled-color:#444;
+$light-color:#f2756a;
+$small:0.22rem;
+$big:.3rem;
+$host:'http://res.dinghuo123.com/'; 
+@mixin border-radius($radius:3px){
+	-webkit-border-radius:$radius;
+	-moz-border-radius:$radius;
+	border-radius:$radius;
+}
+@mixin box-sizing($sizing:border-box) {
+    -webkit-box-sizing:$sizing;     
+    -moz-box-sizing:$sizing;
+    box-sizing:$sizing;
+}
+@mixin box-shadow($shadow){
+	-webkit-box-shadow:$shadow;     
+    -moz-box-shadow:$shadow;
+    box-shadow:$shadow;
+}
+@mixin transform($transform){
+	-webkit-transform:$transform;
+	-moz-transform:$transform;
+	-ms-transform:$transform;
+	transform:$transform;
+}
+@mixin transition($transition){
+	-webkit-transition:$transition;
+	-moz-transition:$transition;
+	-ms-transition:$transition;
+	transition:$transition;
+}
+@mixin animation($animation){
+	-webkit-animation:$animation;
+	-moz-animation:$animation;
+	-ms-animation:$animation;
+	animation:$animation;
+}
+@mixin flexbox{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: flex;
+	display:table\9;
+	width:100%\9;
+}
+@mixin flex-direction($direction){
+	-moz-flex-direction:$direction;
+	-webkit-flex-direction:$direction;
+	-ms-flex-direction:$direction;
+	flex-direction:$direction;
+}
+@mixin flex($flex:1){
+	-webkit-box-flex:$flex;
+	-moz-box-flex:$flex;
+	-webkit-flex:$flex;
+	-moz-flex:$flex;
+	flex:$flex;
+	width:0;
+	display:block;
+	display:table-cell\9;
+	width:auto\9;
+}
+@mixin flex-align($align:center){
+	-ms-flex-align: $align;
+	-moz-box-align:if($align == flex-start, start, $align);
+    -webkit-box-align:if($align == flex-start, start, $align);
+	-webkit-align-items: $align;
+    align-items: $align;
+}
+@mixin flex-justify($justify:center){
+	-ms-flex-align: $justify;
+	-moz-box-pack: $justify;
+    -webkit-box-pack: $justify;
+	-webkit-justify-content: $justify;
+    justify-content: $justify;
+}
+@mixin opacity($opacity:0.5){
+  opacity:$opacity;
+  filter:alpha(opacity=$opacity*100);
+}
+@mixin appearance($appearance:none){
+	-webkit-appearance:$appearance;
+    -moz-appearance:$appearance;
+    -ms-appearance:$appearance;
+    appearance:$appearance;
+}
+@mixin line-bottom($color:$border-color){
+	border: none;
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(50%,transparent),color-stop(50%,transparent),color-stop(100%,$color));
+	background-image: -webkit-linear-gradient(top,transparent 50%,$color 50%,$color 100%);
+	background-image: linear-gradient(to bottom,transparent 50%,$color 50%,$color 100%);
+	-webkit-background-size: 100% 1px;
+	background-size: 100% 1px;
+	background-repeat: no-repeat;
+	background-position: bottom;
+}
+@mixin line-top($color:$border-color){
+	border: none;
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(50%,$color),color-stop(50%,$color),color-stop(100%,transparent));
+	background-image: -webkit-linear-gradient(top,$color 50%,transparent 50%,transparent 100%);
+	background-image: linear-gradient(to bottom,$color 50%,transparent 50%,transparent 100%);
+	-webkit-background-size: 100% 1px;
+	background-size: 100% 1px;
+	background-repeat: no-repeat;
+	background-position: top;
+}
+@mixin line-around($color:$border-color){
+	border: none;
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,$color),color-stop(50%,$color),color-stop(50%,transparent)),-webkit-gradient(linear,left top,left bottom,color-stop(50%,transparent),color-stop(50%,transparent),color-stop(100%,$color));
+	background-image: -webkit-linear-gradient(top,$color 0,$color 50%,transparent 50%),-webkit-linear-gradient(top,transparent 50%,$color 50%,$color 100%);
+	background-image: linear-gradient(to bottom,$color 0,$color 50%,transparent 50%),linear-gradient(to bottom,transparent 50%,$color 50%,$color 100%);
+	-webkit-background-size: 100% 1px,100% 1px;
+	background-size: 100% 1px,100% 1px;
+	background-repeat: no-repeat;
+	background-position: top,bottom;
+}

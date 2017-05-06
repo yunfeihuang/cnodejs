@@ -1,0 +1,47 @@
+@import "../../styles/base.scss";
+
+x-tabbox{
+	display:block;
+	border-bottom:1px solid $line-color;
+	position:relative;
+	line-height:.9rem;
+	@include box-sizing();
+	@include flexbox();
+	-webkit-box-pack: center ;
+	-webkit-flex-pack: distribute;
+	-webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+x-tab-item{
+	display:inline-block;
+	text-align:center;
+	padding:0 0.2rem;
+	@include flex();
+}
+x-tab-item.active{
+	color:$primary-color;
+}
+.x-tab-baseline{
+	position:absolute;
+	left:0;
+	bottom:0;
+	background:$primary-color;
+	height:2px;
+}
+x-tabbox[vertical]{
+	border:0;
+}
+x-tabbox[vertical] x-tab-item{
+	display:block;
+}
+x-tabbox[vertical] .x-tab-baseline{
+	width:1px;
+}
+@media (-webkit-min-device-pixel-ratio: 2), not all{
+	x-tabbox{
+		@include line-bottom();
+	}
+	x-tabbox[vertical]{
+		background-image:none;
+	}
+}

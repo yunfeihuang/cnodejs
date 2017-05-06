@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<title>CNode：Node.js专业中文社区</title>
+		<link rel="stylesheet" href="../../dist/styles/package.min.css" />
+		<script type="text/javascript" src="../../dist/scripts/zepto.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/config.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/package.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/components.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/global.min.js"></script>
+	</head>
+	<body>
+		<x-html>
+      <x-script src="index.js"></x-script>
+      <link rel="prefetch" href="detail.html"/>
+      <link rel="prefetch" href="user.html" />
+	  <link rel="prefetch" href="login.html"/>
+	  <link rel="prefetch" href="comments.html"/>
+      <link rel="prefetch" href="/images/body_placeholder.png" />
+			<x-body>
+				<div class="flex-box-full">
+					<header>
+						<nav class="flex-box">
+							<h2 class="flex-item">CNode-专业中文社区</h2>
+							<!--
+							<a class="btn-pull">
+								<i class="iconfont">&#xe90f</i>
+							</a>
+							-->
+							<a class="btn-pull" href="login.html">
+								<i class="iconfont">&#xe93b</i>
+							</a>
+						</nav>
+					</header>
+					<div>
+					<x-tabbox class="flex-box line-bottom">
+						<x-tab-item class="flex-item">全部</x-tab-item>
+						<x-tab-item class="flex-item">精华</x-tab-item>
+						<x-tab-item class="flex-item">分享</x-tab-item>
+						<x-tab-item class="flex-item">问答</x-tab-item>
+						<x-tab-item class="flex-item">招聘</x-tab-item>
+					</x-tabbox>
+					</div>
+					<x-scrollbox class="flex-item">
+						<x-scroller>
+							<div class="topic-list">
+							<x-ajat action="https://cnodejs.org/api/v1/topics?limit=20&page=1" id="topic">
+							<script type="text/template">
+							<%data.forEach(function(item){%>
+							<div class="topic-item btn-touch line-bottom">
+								<div class="flex-box align-center">
+                  <a href="user.html?id=<%=item.author.loginname%>">
+                    <x-img lazyload src="<%=item.author.avatar_url%>"></x-img>
+                  </a>
+									<div class="topic-item-r flex-item">
+                    <a href="detail.html?id=<%=item.id%>">
+										<h4 class="ell">
+											<%if(item.top){%>
+											<button class="dot">置顶</button>
+											<%}else if(item.good){%>
+											<button class="dot">精华</button>
+											<%}else if(item.tab=="share"){%>
+											<button class="dot" disabled>分享</button>
+											<%}else if(item.tab=="ask"){%>
+											<button class="dot" disabled>问答</button>
+											<%}%>
+										<%=item.title%>
+										</h4>
+										<div class="flex-box weak small">
+											<div class="flex-item"><%=item.reply_count%>/<%=item.visit_count%></div>
+											<div><%=new Date(item.create_at).format("yyyy-MM-dd hh:mm:ss")%></div>
+										</div>
+                    </a>
+									</div>
+								</div>
+							</div>
+							<%})%>
+							</script>
+							</x-ajat>
+						</div>
+						</x-scroller>
+					</x-scrollbox>
+				</div>
+			</x-body>
+		</x-html>
+	</body>
+</html>

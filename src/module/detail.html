@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<title>CNode：Node.js专业中文社区</title>
+		<link rel="stylesheet" href="../../dist/styles/package.min.css" />
+		<script type="text/javascript" src="../../dist/scripts/zepto.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/config.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/package.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/components.min.js"></script>
+		<script type="text/javascript" src="../../dist/scripts/global.min.js"></script>
+	</head>
+	<body>
+		<x-html>
+      <x-script src="detail.js"></x-script>
+			<x-body>
+				<div class="flex-box-full">
+					<header>
+						<nav class="flex-box">
+							<a class="btn-pull goback" onclick="history.back()">
+								<i class="iconfont">&#xe915</i>
+							</a>
+							<div class="flex-item">
+								<h2>主题详情</h2>
+							</div>
+							<a class="btn-pull to-comments">
+								<i class="iconfont">&#xe931</i>
+							</a>
+						</nav>
+					</header>
+					<div class="scrollbox flex-item default-placeholder">
+						<x-ajat action="https://cnodejs.org/api/v1/topic/<%=query.id%>">
+							<script type="text/template">
+              <%
+                xhtml.querySelector(".to-comments").href="comments.html?id="+query.id+"&title="+data.title;
+              %>
+							<div class="topic-detail">
+                <div class="topic-detail-user">
+                  <h1>
+                    <%if(data.top){%>
+                      <button class="dot">置顶</button>
+                      <%}else if(data.good){%>
+                      <button class="dot">精华</button>
+                      <%}else if(data.tab=="share"){%>
+                      <button class="dot" disabled>分享</button>
+                      <%}else if(data.tab=="ask"){%>
+                      <button class="dot" disabled>问答</button>
+                      <%}%>
+                    <%=data.title%>
+                  </h1>
+                  <p class="weak small">
+                    发布于 <%=new Date(data.create_at).format("yyyy-MM-dd hh:mm:ss")%><span class="space"></span>
+                    作者 <%=data.author.loginname%><span class="space"></span>
+                    <%=data.visit_count%> 次浏览<span class="space"></span> 
+                    最后一次编辑是 <%=new Date(data.last_reply_at).format("yyyy-MM-dd hh:mm:ss")%>
+                   </p>
+								</div>
+                <%if(data.content){%>
+                <div class="topic-detail-content line-around">
+									<%=data.content.replace(/<img/gi,"<x-img lazyload").replace(/<a/gi,"<a target='_blank' ")%>
+								</div>
+                <%}%>
+                <%if(data.replies.length>0){%>
+								<div class="topic-detail-comments">
+									<h2><%=data.reply_count%>条回复</h2>
+                  <div>
+									<%data.replies.forEach(function(item){%>
+									<div class="comments-item line-bottom">
+										<div class="flex-box">
+                      <a href="user.html?id=<%=item.author.loginname%>">
+                        <x-img class="comments-avatar" lazyload  src="<%=item.author.avatar_url%>"></x-img>
+                      </a>
+											<div class="flex-item comments-item-r">
+												<div class="flex-box">
+													<div class="flex-item"><div class="ell"><%=item.author.loginname%></div></div>
+                          <div class="weak small"><%=new Date(item.create_at).format("yyyy-MM-dd hh:mm:ss")%></div>
+												</div>
+												<div class="comments-content"><%=item.content.replace(/<img/gi,"<x-img lazyload").replace(/<a/gi,"<a target='_blank' ")%></div>
+											</div>
+										</div>
+									</div>
+									<%})%>
+                  </div>
+								</div>
+                <%}%>
+							</div>
+							</script>
+						</x-ajat>
+					</div>	
+				</div>
+			</x-body>
+		</x-html>
+	</body>
+</html>

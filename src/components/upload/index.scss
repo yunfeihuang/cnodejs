@@ -1,0 +1,51 @@
+@import "../../styles/base.scss";
+
+x-upload{
+	display:inline-block;
+	vertical-align:middle;
+	/*overflow:hidden;*/
+	position:relative;
+	height:100%;
+	width:100%;
+}
+x-upload input{
+	opacity:0;
+}
+x-upload .webuploader-pick{
+	position:relative;
+	height:100%;
+	width:100%;
+}
+x-upload .webuploader-pick+div{
+	min-height:100%;
+	min-width:100%;
+}
+.file-item{
+	position:relative;
+	margin: 0 .3rem;
+}
+.file-item .flex-item{
+	overflow: hidden;
+    word-break: break-all;
+}
+.file-item-progress{
+	position:absolute;
+	top:0;
+	height:1px;
+	max-width:100%;
+	background-color:$primary-color;
+}
+.file-item .flex-box{
+    padding: .2rem 0;
+    min-height: 1.15rem;
+}
+.file-delete{
+	width: 0.34rem;
+	height: 0.34rem;
+	background:url($host+'app/themes/src/default/imgs/ic-mix.png') no-repeat;
+	background-position: -0.5rem 0;
+	box-sizing: content-box;
+	background-size: 1.5rem 0.5rem;
+	border:0;
+	padding: 0;
+}

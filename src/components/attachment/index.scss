@@ -1,0 +1,77 @@
+@import "../../styles/base.scss";
+
+x-attachment{
+	padding:0 0.3rem;
+	margin:0.25rem 0;
+	margin: .25rem 0 -0.2rem 0;
+	@include flexbox();
+	-webkit-box-lines:multiple;
+	box-lines:multiple;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+x-attachment-item,x-attachment x-upload{
+	margin-right:0.2rem;
+	margin-bottom:0.2rem;
+	width:1.5rem;
+	height:1.5rem;
+	position:relative;
+	display:block;
+}
+x-attachment-item{
+	box-shadow: 0px 0px 2px rgba(0,0,0,0.15);
+    background: #fff;
+}
+x-attachment x-upload:before{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	content:'\e940';
+	font-size:1.65rem;
+	color:#e5e5e5;
+	font-family:iconfont;
+	line-height:1.5rem;
+}
+x-attachment-item img{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	max-height:100%;
+}
+x-attachment-item span.remove{
+	position:absolute;
+	top:-0.14rem;
+	right:-0.14rem;
+	z-index:10;
+    border-radius: 50%;
+	overflow: hidden;
+	display:none;
+}
+x-attachment-item span.remove:before{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:#fff;
+	content:'';
+	z-index:-1;
+	@include transform(scale(0.5));
+}
+x-attachment-item span.remove .iconfont{
+	font-size:0.45rem;
+	display:inline-block;
+	color:red;
+	position:relative;
+	z-index:10;
+}
+.hidden-remove span.remove{
+	display:none;
+}
+.attachment-remove span.remove{
+	display:block;
+}

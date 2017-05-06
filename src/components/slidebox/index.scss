@@ -1,0 +1,17 @@
+@import "../../styles/base.scss";
+x-slidebox,x-slide,x-slide-item{
+	display:block;
+}
+x-slidebox{
+	position:relative; 
+}
+.slidebox-pagination{
+    padding: 0.1rem 0.15rem;
+    line-height: 1em;
+    color: #fff;
+    background-color: rgba(0,0,0,0.2);
+	position:absolute;
+	right:0;
+	bottom:0;
+	z-index:100;
+}

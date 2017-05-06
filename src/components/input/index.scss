@@ -1,0 +1,96 @@
+@import "../../styles/base.scss";
+
+x-input{
+	display:block;
+}
+x-input input,x-password input{
+	border:0;
+	background-color:transparent;
+	position:relative;
+	z-index:10;
+	width:100%;
+	border-radius:3px;
+	height:0.85rem;
+	padding:0 0.25rem;
+}
+x-input.focus label:after{
+	border-color:$primary-color;
+}
+x-switch,x-radio,x-checkbox{
+	display:inline-block;
+	overflow:hidden;
+	vertical-align: middle;
+	-webkit-user-select:none;
+	user-select:none;
+}
+x-radio label,x-checkbox,label{
+	display:block;
+}
+x-radio span,x-checkbox span{
+	display: inline-block;
+    vertical-align: middle;
+	margin-left:-2px;
+}
+x-switch input,x-radio input,x-checkbox input{
+	width:0!important;
+	min-width:0!important;
+	opacity:0!important;
+	margin:0!important;
+	font-size:0!important;
+	height:0!important;
+	min-height:0!important;
+	padding:0!important;
+	display:none;
+}
+x-radio i,x-checkbox i{
+	width:36px;
+	height:36px;
+	border:1px solid $border-color;
+	border-radius:50%;
+	display:inline-block;
+	box-sizing: border-box;
+	background-clip: content-box;
+	@include transform(unquote("scale(0.5)"));
+	vertical-align: middle;
+	position:relative;
+	margin-left: -6px;
+}
+x-radio i:before,x-checkbox i:before{
+	content:'';
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin:-11px;
+	border-radius:50%;
+}
+x-radio input:checked+i,x-checkbox input:checked+i{
+	border-color:$primary-color;
+}
+x-checkbox input:checked+i,x-radio input:checked+i{
+	background-color:$primary-color;
+	border:0;
+}
+x-checkbox input+i:before,x-radio input+i:before{
+	@include transform(rotate(45deg));
+}
+x-checkbox input:checked+i:before,x-radio input:checked+i:before{
+	border: 2px solid #fff;
+    width: .21rem;
+    height: .38rem;
+    border-left: 0;
+    border-top: 0;
+    margin-left: -.13rem;
+    margin-top: -.29rem;
+    border-radius: 0;
+}
+x-checkbox[reverse],x-radio[reverse]{
+	display:block;
+	position:relative;
+}
+x-checkbox[reverse] i,x-radio[reverse] i{
+	position:absolute;
+	right:0;
+}
+x-checkbox[reverse] span, x-radio[reverse] span{
+	margin-left:0;
+}
