@@ -1,4 +1,4 @@
-# cnodejs (https://cnodejs.org/社区)
+# cnodejs (https://cnodejs.org/)社区
 
 浏览地址： http://cnode.bittyos.com/src/module/index.html
 
